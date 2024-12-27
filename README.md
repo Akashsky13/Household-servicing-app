@@ -2,7 +2,20 @@
 
 # App Screenshots
 
-This project demonstrates a music app with user, customer, and admin functionalities. Below are the screenshots of various pages in the app.
+# Household Servicing App
+
+This is a web application designed for managing household services with user, customer, and admin functionalities.
+
+---
+
+## How to Run the App
+
+Follow these steps to download, set up, and run the app on your local system:
+
+### 1. Clone the Repository
+Clone the project repository from GitHub:
+bash
+git clone https://github.com/your-username/household-servicing-app.git
 
 ## Home
 ![Home](screenshots/home.png)
