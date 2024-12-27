@@ -12,15 +12,21 @@ A web application for managing household services with role-based access for Adm
    ```bash
    git clone https://github.com/Akashsky13/Household-servicing-app.git
 
-## nevigate to the main folder
-- cd Household_servicing_app
+2. **Nevigate to the main folder**
+   ```bash
+   cd Household-servicing-app/Household_servicing_app
   
-## install these requirements 
-- pip install -r req.txt
+3. **Install all required packages from req.txt file**
+   ```bash
+   pip install -r req.txt
   
-## run the app 
+4. **run the app** 
+   ```bash
+   python app.py
 
-- python app.py
+5. **follow the link after succesfull running the app**
+   ```bash
+   http://127.0.0.1:5000
 
 ## Home
 ![Home](screenshots/home.png)
