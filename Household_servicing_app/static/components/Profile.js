@@ -60,7 +60,7 @@ const Profile = {
     async loadUserData() {
       try {
         const response = await fetch(
-          `http://127.0.0.1:5000/api/user/${this.id}`
+          `${window.location.origin}api/user/${this.id}`
         );
         if (response.ok) {
           const userData = await response.json();
@@ -90,7 +90,7 @@ const Profile = {
 
       this.loading = true;
       try {
-        const response = await fetch("http://127.0.0.1:5000/api/user/update", {
+        const response = await fetch(`${window.location.origin}/api/user/update`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
