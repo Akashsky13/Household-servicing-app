@@ -60,7 +60,7 @@ const Profile = {
     async loadUserData() {
       try {
         const response = await fetch(
-          `${window.location.origin}api/user/${this.id}`
+          `${window.location.origin}/api/user/${this.id}`
         );
         if (response.ok) {
           const userData = await response.json();
