@@ -1,21 +1,26 @@
 # Household-servicing-app
+A web application for managing household services with role-based access for Admin, Professionals, and Customers.
 
-# App Screenshots
+## Features
+- Role-based login for Admin, Professionals, and Customers.
+- Easy management of household services.
+- Dynamic dashboards tailored for each user role.
 
-# Household Servicing App
+## Installation
+1. **Clone the Repository**  
+   Clone this repository to your local machine:
+   ```bash
+   git clone https://github.com/Akashsky13/Household-servicing-app.git
 
-This is a web application designed for managing household services with user, customer, and admin functionalities.
+## nevigate to the main folder
+- cd Household_servicing_app
+  
+## install these requirements 
+- pip install -r req.txt
+  
+## run the app 
 
----
-
-## How to Run the App
-
-Follow these steps to download, set up, and run the app on your local system:
-
-### 1. Clone the Repository
-Clone the project repository from GitHub:
-bash
-git clone https://github.com/your-username/household-servicing-app.git
+- python app.py
 
 ## Home
 ![Home](screenshots/home.png)
