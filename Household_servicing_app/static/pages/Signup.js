@@ -15,9 +15,11 @@ const Signup = {
         </div>
         <div class="form-group mb-4">
           <select v-model="role" class="form-control" @change="fetchServices">
-            <option value="cust">Customer</option>
-            <option value="prof">Professional</option>
-          </select>
+  <option value="" disabled>Select Role</option>
+  <option value="cust">Customer</option>
+  <option value="prof">Professional</option>
+</select>
+
         </div>
 
         <!-- Additional fields for professionals -->
@@ -87,22 +89,41 @@ const Signup = {
         const res = await fetch(url);
         if (res.ok) {
           const data = await res.json();
-          this.services = data; // Set the services from the response
+          this.services = data;
         } else {
           console.error("Failed to fetch services");
+          alert("Unable to fetch services. Please try again later.");
         }
+      } else {
+        this.services = []; // Clear services for non-professionals
       }
     },
+    
     handleFileUpload(event) {
       this.file = event.target.files[0]; // Get the selected file (ZIP)
     },
     async submitInfo() {
+      // Validation for required fields
+      if (!this.fullName || !this.email || !this.password || !this.role) {
+        alert("Please fill out all required fields.");
+        return;
+      }
+    
+      // Validate serviceType for professionals
+      if (this.role === "prof") {
+        const isServiceValid = this.services.some(service => service.name === this.serviceType);
+        if (!isServiceValid) {
+          alert("Please select a valid service type.");
+          return;
+        }
+      }
+    
       const formData = new FormData();
       formData.append("full_name", this.fullName);
       formData.append("email", this.email);
       formData.append("password", this.password);
       formData.append("role", this.role);
-
+    
       if (this.role === "prof") {
         formData.append("service_type", this.serviceType);
         formData.append("experience_years", this.experienceYears);
@@ -113,13 +134,13 @@ const Signup = {
           formData.append("documents", this.file); // Append the ZIP file
         }
       }
-
+    
       if (this.role === "cust") {
         formData.append("location", this.location);
         formData.append("pincode", this.pincode);
         formData.append("mobile", this.mobile);
       }
-
+    
       const origin = window.location.origin;
       const url = `${origin}/register`;
       const res = await fetch(url, {
@@ -127,7 +148,7 @@ const Signup = {
         body: formData,
         credentials: "same-origin",
       });
-
+    
       if (res.ok) {
         const data = await res.json();
         console.log(data);
@@ -135,8 +156,10 @@ const Signup = {
       } else {
         const errorData = await res.json();
         console.error("Sign up failed:", errorData);
+        alert("Sign up failed. Please try again.");
       }
     },
+    
     setServiceId() {
       const selectedService = this.services.find(service => service.name === this.serviceType);
       if (selectedService) {
